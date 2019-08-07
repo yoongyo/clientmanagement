@@ -7,9 +7,16 @@
     <p class="text-center">{{ client.content }}</p>
 </div>
 
-<div class="mt-5" style="border:1px solid black; border-radius:20px">
-    <a class="text-center" href="{% url 'client:client_list' %}"><h3>LIST 보기</h3></a>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="mt-5" style="border:1px solid black; border-radius:20px;">
+            <a class="text-center" href="{% url 'client:client_list' %}"><h3 class="m-0">LIST 보기</h3></a>
+        </div>
+    </div>
+    <div class="col-2"></div>
 </div>
+
 
 <script>
     var name = "{{ client.name }}";
