@@ -25,7 +25,7 @@ def signin(request):
             response = HttpResponseRedirect(reverse('main'))
             response.set_cookie('username', username)
             response.set_cookie('password', password)
-            return response
+            return HttpResponseRedirect(reverse('client:client_list'))
 
         else:
             return render(request, 'accounts/login_fail.html')
