@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid">
+<div class="container" style="border:1px solid black">
     {% for i in clients %}
-    <div class="row" style="border:1px solid black">
-        <div class="col-3 text-center">
-            {{ i.name }}
+    <a href="{% url 'client:client_detail' i.phone %}">
+        <div class="row" style="border-bottom:1px solid black">
+            <div class="col-3 text-center">
+                {{ i.name }}
+            </div>
+            <div class="col-9">
+                {{ i.phone }}
+            </div>
         </div>
-        <div class="col-9">
-            {{ i.phone }}
-        </div>
-    </div>
     {% endfor %}
+    </a>
 </div>
 
 

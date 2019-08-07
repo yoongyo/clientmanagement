@@ -11,6 +11,9 @@
     <div class="col-2"></div>
     <div class="col-8">
         <div class="mt-5" style="border:1px solid black; border-radius:20px;">
+            <a class="text-center" href="{% url 'client:client_edit' client.phone %}"><h3 class="m-0">수정하기</h3></a>
+        </div>
+        <div class="mt-2" style="border:1px solid black; border-radius:20px;">
             <a class="text-center" href="{% url 'client:client_list' %}"><h3 class="m-0">LIST 보기</h3></a>
         </div>
     </div>
