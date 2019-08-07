@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import ClientForm
 
 
-@login_required
 def client_list(request):
     clients = Client.objects.all()
     clients = clients.filter(admin=request.user)
@@ -13,15 +12,13 @@ def client_list(request):
     })
 
 
-@login_required
 def client_detail(request, phone):
-    client = get_object_or_404(Client, phone=phone, admin=request.user)
+    client = get_object_or_404(Client, phone=phone)
     return render(request, 'client/client_detail.html', {
         'client': client
     })
 
 
-@login_required
 def client_new(request):
     if request.method == 'POST':
         form = ClientForm(request.POST, request.FILES)
@@ -39,7 +36,6 @@ def client_new(request):
     })
 
 
-@login_required
 def client_edit(request, phone):
     client = get_object_or_404(Client, admin=request.user, phone=phone)
     if request.method == 'POST':

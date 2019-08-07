@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
 <div class="container" style="border:1px solid black">
     {% for i in clients %}
     <a href="{% url 'client:client_detail' i.phone %}">
