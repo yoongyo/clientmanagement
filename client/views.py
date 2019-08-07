@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Client
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def client_list(request):
     clients = Client.objects.all()
     clients = clients.filter(admin=request.user)
@@ -10,6 +12,7 @@ def client_list(request):
     })
 
 
+@login_required
 def client_detail(request, phone):
     client = get_object_or_404(Client, phone=phone, admin=request.user)
     return render(request, 'client/client_detail.html', {
