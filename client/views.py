@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ClientForm
 
 
+@login_required()
 def client_list(request):
     clients = Client.objects.all()
     clients = clients.filter(admin=request.user)
