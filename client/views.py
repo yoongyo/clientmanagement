@@ -6,14 +6,17 @@ from .forms import ClientForm
 
 @login_required()
 def client_list(request):
+    user_id = request.user.username
+    user_ps = request.user.password
     clients = Client.objects.all()
     clients = clients.filter(admin=request.user)
     return render(request, 'client/client_list.html', {
-        'clients': clients
+        'clients': clients,
+        'user_id': user_id,
+        'user_ps': user_ps
     })
 
 
-@login_required()
 def client_detail(request, phone):
     client = get_object_or_404(Client, phone=phone, admin=request.user)
     return render(request, 'client/client_detail.html', {
@@ -21,7 +24,6 @@ def client_detail(request, phone):
     })
 
 
-@login_required()
 def client_new(request):
     if request.method == 'POST':
         form = ClientForm(request.POST, request.FILES)
@@ -39,7 +41,6 @@ def client_new(request):
     })
 
 
-@login_required()
 def client_edit(request, phone):
     client = get_object_or_404(Client, admin=request.user, phone=phone)
     if request.method == 'POST':
