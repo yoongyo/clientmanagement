@@ -11,7 +11,7 @@
 </style>
 <div class="container">
     {% for i in clients %}
-    <a href="{% url 'client:client_detail' i.phone %}">
+    <a href="{% url 'client:client_detail' user_id user_ps i.phone %}">
         <div class="row py-3" style="border-bottom:1px solid black">
             <div class="col-3 text-center" style="border-right:1px solid black">
                 {{ i.name }}
