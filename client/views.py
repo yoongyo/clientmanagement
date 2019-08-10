@@ -15,7 +15,7 @@ def client_list(request):
 
 @login_required()
 def client_detail(request, phone):
-    client = get_object_or_404(Client, phone=phone)
+    client = get_object_or_404(Client, phone=phone, admin=request.user)
     return render(request, 'client/client_detail.html', {
         'client': client
     })
