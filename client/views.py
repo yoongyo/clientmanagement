@@ -18,7 +18,7 @@ def client_list(request):
 
 
 def client_detail(request, user_id, user_ps, phone):
-    client = get_object_or_404(Client, phone=phone, admin=request.user)
+    client = get_object_or_404(Client, phone=phone, admin__username=user_id)
     return render(request, 'client/client_detail.html', {
         'client': client
     })
