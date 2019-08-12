@@ -31,7 +31,8 @@ def client_new(request):
             client = form.save(commit=False)
             client.admin = request.user
             client.save()
-            return HttpResponseRedirect(reverse('client:client_detail', args=[client.phone]))
+            return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
+                                                                              request.user.password, client.phone]))
         else:
             print(form.errors)
     else:
@@ -49,7 +50,8 @@ def client_edit(request, phone):
             client = form.save(commit=False)
             client.admin = request.user
             client.save()
-            return HttpResponseRedirect(reverse('client:client_detail', args=[client.phone]))
+            return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
+                                                                              request.user.password, client.phone]))
         else:
             print(form.errors)
     else:
