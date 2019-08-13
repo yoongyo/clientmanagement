@@ -6,7 +6,7 @@
         {% csrf_token %}
         이름 : {{ form.name }}<br>
         번호 : {{ form.phone }}<br>
-        {% if str %}
+        {% if validation %}
         <span style="color:red">{{ str }}</span><br>
         {% endif %}
         내용 : {{ form.content }}<br>
