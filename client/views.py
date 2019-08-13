@@ -25,37 +25,59 @@ def client_detail(request, user_id, user_ps, phone):
 
 
 def client_new(request):
+    ok = True
+    validation = ""
+    clients = Client.objects.all()
+    clients = clients.filter(admin=request.user)
     if request.method == 'POST':
         form = ClientForm(request.POST, request.FILES)
         if form.is_valid():
             client = form.save(commit=False)
             client.admin = request.user
-            client.save()
-            return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
-                                                                              request.user.password, client.phone]))
+            for i in clients:
+                if i.phone == client.phone:
+                    validation = "이미 저장된 번호입니다."
+                    ok = False
+            if ok:
+                client.save()
+                return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
+                                                                                  request.user.password,
+                                                                                  client.phone]))
         else:
             print(form.errors)
     else:
         form = ClientForm()
     return render(request, 'client/client_new.html', {
         'form': form,
+        'validation': validation
     })
 
 
 def client_edit(request, phone):
+    ok = True
+    validation = ""
+    clients = Client.objects.all()
+    clients = clients.filter(admin=request.user)
     client = get_object_or_404(Client, admin=request.user, phone=phone)
     if request.method == 'POST':
         form = ClientForm(request.POST, request.FILES, instance=client)
         if form.is_valid():
             client = form.save(commit=False)
             client.admin = request.user
-            client.save()
-            return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
-                                                                              request.user.password, client.phone]))
+            for i in clients:
+                if i.phone == client.phone:
+                    validation = "이미 저장된 번호입니다."
+                    ok = False
+            if ok:
+                client.save()
+                return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
+                                                                                  request.user.password,
+                                                                                  client.phone]))
         else:
             print(form.errors)
     else:
         form = ClientForm(instance=client)
     return render(request, 'client/client_edit.html', {
         'form': form,
+        'validation': validation
     })

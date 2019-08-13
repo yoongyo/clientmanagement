@@ -9,6 +9,7 @@
         padding:0
     }
 </style>
+
 <div class="container">
     {% for i in clients %}
     <a href="{% url 'client:client_detail' user_id user_ps i.phone %}">
@@ -32,6 +33,10 @@
         <div class="col-2"></div>
     </div>
 </div>
+
+<script>
+
+</script>
 
 <script>
     var id = "{{ user_id }}";
