@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     re_path(r'^$', views.main, name='main'),
+    re_path(r'^info/$', views.info, name='info'),
     path('admin/', admin.site.urls),
     path('client/', include(('client.urls', 'client'), namespace='client')),
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts'))
