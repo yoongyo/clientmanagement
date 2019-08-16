@@ -13,7 +13,7 @@ class Client(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE, blank=True, null=True)
     admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=50, null=True, blank=True)
     content = models.TextField(blank=True, null=True)
 
     # business 휴대폰
@@ -22,7 +22,7 @@ class Client(models.Model):
     birth = models.CharField(max_length=50, blank=True, null=True)
     agent = models.CharField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=50, blank=True, null=True)
-    agent_phone = models.CharField(max_length=15, blank=True, null=True)
+    agent_phone = models.CharField(max_length=50, blank=True, null=True)
     joining_date = models.CharField(max_length=50, blank=True, null=True)
     division = models.CharField(max_length=50, blank=True, null=True)
     note1 = models.CharField(max_length=50, blank=True, null=True)

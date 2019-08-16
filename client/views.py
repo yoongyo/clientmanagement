@@ -92,7 +92,7 @@ def excel(request):
             name = r[2].value
             resident_registration_number = r[3].value
             address = r[4].value
-            phone = r[4].value
+            phone = r[5].value
             agent = r[6].value
             agent_phone = r[7].value
             call_plane = r[8].value
