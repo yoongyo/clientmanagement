@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRedirect
-from .models import Client
+from .models import Client, Business
 from django.contrib.auth.decorators import login_required
 from .forms import ClientForm
-
+import openpyxl
 
 @login_required()
 def client_list(request):
@@ -81,3 +81,31 @@ def client_edit(request, phone):
         'form': form,
         'validation': validation
     })
+
+
+def excel(request):
+    if request.method == "POST":
+        excel = request.FILES['file']
+        wb = openpyxl.load_workbook(excel)
+        ws = wb.active
+        for r in ws.rows:
+            name = r[2].value
+            resident_registration_number = r[3].value
+            address = r[4].value
+            phone = r[4].value
+            agent = r[6].value
+            agent_phone = r[7].value
+            call_plane = r[8].value
+            joining_date = r[9].value
+            note1 = r[10].value
+            note2 = r[11].value
+            note3 = r[12].value
+            division = r[13].value
+            registration_date = r[14].value
+            model_instance = Client(business=Business.objects.all()[0], admin=request.user, name=name,
+                                    resident_registration_number=resident_registration_number, address=address,
+                                    phone=phone, agent=agent, agent_phone=agent_phone, call_plane=call_plane,
+                                    joining_date=joining_date, note1=note1, note2=note2, note3=note3, division=division,
+                                    registration_date=registration_date)
+            model_instance.save()
+    return render(request, 'client/excel.html')
