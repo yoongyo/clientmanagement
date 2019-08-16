@@ -23,12 +23,12 @@ class Client(models.Model):
     agent = models.CharField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=50, blank=True, null=True)
     agent_phone = models.CharField(max_length=15, blank=True, null=True)
-    joining_date = models.DateField(blank=True, null=True)
+    joining_date = models.CharField(max_length=50, blank=True, null=True)
     division = models.CharField(max_length=50, blank=True, null=True)
     note1 = models.CharField(max_length=50, blank=True, null=True)
     note2 = models.CharField(max_length=50, blank=True, null=True)
     note3 = models.CharField(max_length=50, blank=True, null=True)
-    registration_date = models.DateField(blank=True, null=True)
+    registration_date = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.name
