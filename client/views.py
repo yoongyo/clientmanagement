@@ -64,15 +64,10 @@ def client_edit(request, phone):
         if form.is_valid():
             client = form.save(commit=False)
             client.admin = request.user
-            for i in clients:
-                if i.phone == client.phone:
-                    validation = "이미 저장된 번호입니다."
-                    ok = False
-            if ok:
-                client.save()
-                return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
-                                                                                  request.user.password,
-                                                                                  client.phone]))
+            client.save()
+            return HttpResponseRedirect(reverse('client:client_detail', args=[request.user.username,
+                                                                              request.user.password,
+                                                                              client.phone]))
         else:
             print(form.errors)
     else:
