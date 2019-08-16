@@ -86,6 +86,7 @@ def client_edit(request, phone):
 def excel(request):
     if request.method == "POST":
         excel = request.FILES['file']
+        print(excel)
         wb = openpyxl.load_workbook(excel)
         ws = wb.active
         for r in ws.rows:
