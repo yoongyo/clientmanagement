@@ -3,6 +3,7 @@ from .models import Client, Business
 from django.contrib.auth.decorators import login_required
 from .forms import ClientForm
 import openpyxl
+import re
 
 @login_required()
 def client_list(request):
@@ -88,7 +89,7 @@ def excel(request):
             name = r[2].value
             resident_registration_number = r[3].value
             address = r[4].value
-            phone = r[5].value
+            phone2 = r[5].value
             agent = r[6].value
             agent_phone = r[7].value
             call_plane = r[8].value
@@ -98,7 +99,8 @@ def excel(request):
             note3 = r[12].value
             division = r[13].value
             registration_date = r[14].value
-            model_instance = Client(business=Business.objects.all()[0], admin=request.user, name=name,
+            phone = re.sub('[-]]', '', phone2)
+            model_instance = Client(business=Business.objects.all()[0], admin=request.user, name=name, phone2=phone2,
                                     resident_registration_number=resident_registration_number, address=address,
                                     phone=phone, agent=agent, agent_phone=agent_phone, call_plane=call_plane,
                                     joining_date=joining_date, note1=note1, note2=note2, note3=note3, division=division,

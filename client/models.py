@@ -17,6 +17,7 @@ class Client(models.Model):
     content = models.TextField(blank=True, null=True)
 
     # business 휴대폰
+    phone2 = models.CharField(max_length=50, blank=True, null=True)
     call_plane = models.CharField(max_length=50, blank=True, null=True)
     resident_registration_number = models.CharField(max_length=50, blank=True, null=True)
     birth = models.CharField(max_length=50, blank=True, null=True)
