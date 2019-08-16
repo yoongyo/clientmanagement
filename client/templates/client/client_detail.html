@@ -4,8 +4,26 @@
 <div class="container-fluid pt-5">
     <h1 class="text-center" id="name">{{ client.name }}</h1>
     <h3 class="text-center" id="phone">{{ client.phone }}</h3>
-    <p class="text-center" id="content">{{ client.content|safe }}</p>
-
+    <p class="text-center" id="content">
+        {% if client.business.name == "휴대폰" %}
+            사업종류 - {{ client.business.name }}<br>
+            주등록번호 - {{ client.resident_registration_number }}<br>
+            출생일 - {{ client.birth }}<br>
+            주소 - {{ client.address }}<br>
+            개통번호 - {{ client.phone }}<br>
+            대리인 - {{ client.agent }}<br>
+            대리인 전화번호 - {{ client.agent_phone }}<br>
+            상품명/요금제 - {{ client.call_plane }}<br>
+            가입일 - {{ client.joining_date }}<br>
+            구분 - {{ client.division }}<br>
+            비고1 - {{ client.note1 }}<br>
+            비고2 - {{ client.note2 }}<br>
+            비고3 - {{ client.note3 }}<br>
+            등록일 - {{ client.registration_date }}<br>
+        {% else %}
+        {{ client.content }}
+        {% endif %}
+    </p>
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
