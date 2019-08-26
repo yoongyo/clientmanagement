@@ -1,7 +1,7 @@
 from .common import *
 import dj_database_url
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['clientmanagement.pythonanywhere.com']
 
 # DATABASE
