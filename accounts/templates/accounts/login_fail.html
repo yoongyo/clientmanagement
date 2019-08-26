@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2 class="text-center">로그인이 잘못되었습니다.</h2>
+<div class="container-fluid text-center">
+    <h2 class="text-center mb-5">로그인이 잘못되었습니다.</h2>
+    <a class="py-3 px-5 mt-4" style="border: 1px solid black;border-radius:15px" href="{% url 'accounts:login' %}">뒤로 가기</a>
+</div>
 {% endblock %}
