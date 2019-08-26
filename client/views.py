@@ -99,7 +99,10 @@ def excel(request):
             note3 = r[12].value
             division = r[13].value
             registration_date = r[14].value
-            phone = re.sub('[-]', '', phone2)
+            if phone2 == "":
+                phone = ""
+            else:
+                phone = re.sub('[-]', '', phone2)
             print(phone)
             model_instance = Client(business=Business.objects.all()[0], admin=request.user, name=name, phone2=phone2,
                                     resident_registration_number=resident_registration_number, address=address,
