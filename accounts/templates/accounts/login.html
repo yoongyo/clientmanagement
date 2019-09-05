@@ -6,33 +6,32 @@
       font-family: gulim, arial, helvetica, sans-serif;
     }
 </style>
-
+<div style="height:100vh;justify-content:center;align-items:center;display: flex;">
 <div class="container">
-    <div style="height:100px"></div>
-    <h1 class="text-center mb-4">5G CRM</h1>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <div class="row py-3">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <img src="{% static 'image/LoginLog.jpg' %}" width="100%">
+        <h1 class="text-center mb-4">5G CRM</h1>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="row py-2">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                        <img src="{% static 'image/LoginLog.jpg' %}" width="100%">
+                    </div>
+                    <div class="col-3"></div>
                 </div>
-                <div class="col-3"></div>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.username }}
+                    {{ form.password }}
+                    <input name="method" type="text" value="mobile" style="display:none">
+                    <button class="form-control mt-2" style="background-color:rgb(78,151,233);border-color: white" type="submit">
+                        <span style="color:white">Log in</span>
+                    </button>
+                </form>
             </div>
-            <form method="post" action="">
-                {% csrf_token %}
-                {{ form.username }}
-                {{ form.password }}
-                <input name="method" type="text" value="mobile" style="display:none">
-                <button class="form-control mt-2" style="background-color:rgb(78,151,233);border-color: white" type="submit">
-                    <span style="color:white">Log in</span>
-                </button>
-            </form>
+            <div class="col-1"></div>
         </div>
-        <div class="col-1"></div>
-    </div>
-
+</div>
 </div>
 
 <!--{% load static %}-->
