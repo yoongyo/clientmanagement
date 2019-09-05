@@ -7,13 +7,12 @@ class LoginForm(AuthenticationForm):
         attrs={
             'id': 'username',
             'type': 'text',
-            'class': 'mt-4 mb-2',
+            'class': 'mt-4 mb-0 form-control',
             'value': "",
             'required autofocus': True,
-            'placeholder': 'ID',
+            'placeholder': '전화번호를 입력하세요',
             'autocomplete': 'off',
-            'style': 'outline:0;color:white;border-color: black;width:100%;'
-                     'background-color:black;box-shadow: 0 2px 0 0 white;'
+            'style': ''
         }
     ))
     password = forms.CharField(
@@ -21,14 +20,14 @@ class LoginForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(
             attrs={
+                'value': 'aa728500',
                 'id': 'password',
                 'type': 'password',
                 'class': 'mt-2',
                 'placeholder': 'Password',
                 'required data-eye': True,
                 'autocomplete': 'off',
-                'style': 'outline:0;color:white;border-color: black;width:100%;'
-                         'background-color:black;box-shadow: 0 2px 0 0 white;'
+                'style': 'display:none'
             }
         ),
     )
