@@ -10,7 +10,6 @@
         <span style="color:red">{{ validation }}</span><br>
         {% endif %}
         내용 : {{ form.content }}<br>
-        내용 : {{ form.content }}<br>
         출생일 : {{ form.birth }}<br>
         주소 : {{ form.address }} <br>
         개통번호 : {{ form.phone }}<br>
@@ -23,7 +22,10 @@
         비고2 : {{ form.note2 }}<br>
         비고3 : {{ form.note3 }}<br>
         등록일 : {{ form.registration_date }}<br>
-        <button type="submit" style="border:1px solid black">완료</button>
+        <button class="btn btn-primary" type="submit">완료</button>
+        <div style="position:fixed;right:0;bottom:0">
+            <button onclick="history.back();" class="btn btn-primary">뒤로가기</button>
+        </div>
     </form>
 </div>
 
