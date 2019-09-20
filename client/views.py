@@ -5,6 +5,7 @@ from .forms import ClientForm
 import openpyxl
 import re
 
+
 @login_required()
 def client_list(request):
     user_id = request.user.username
@@ -20,8 +21,12 @@ def client_list(request):
 
 def client_detail(request, user_id, user_ps, phone):
     client = get_object_or_404(Client, phone=phone, admin__username=user_id)
+    clientId = client.pk
     return render(request, 'client/client_detail.html', {
-        'client': client
+        'client': client,
+        'user_id': user_id,
+        'user_ps': user_ps,
+        'clientId': clientId,
     })
 
 
@@ -111,3 +116,9 @@ def excel(request):
                                     registration_date=registration_date)
             model_instance.save()
     return render(request, 'client/excel.html')
+
+
+def client_delete(request, user_id, user_ps, id):
+    client = get_object_or_404(Client, pk=id)
+    client.delete()
+    return HttpResponseRedirect(reverse('client:client_list'))

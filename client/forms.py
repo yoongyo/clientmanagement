@@ -21,6 +21,7 @@ class ClientForm(forms.ModelForm):
             'content': forms.Textarea(
                 attrs={
                     'class': 'form-control',
+                    'style': 'height:120px'
                 }
             ),
             'agent': forms.TextInput(
@@ -74,6 +75,11 @@ class ClientForm(forms.ModelForm):
                 }
             ),
             'call_plane': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
+            'birth': forms.TextInput(
                 attrs={
                     'class': 'form-control',
                 }
