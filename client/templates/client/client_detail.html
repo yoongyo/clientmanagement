@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container-fluid pt-5">
-    <h1 class="text-center" id="name">{{ client.name }}</h1>
-    <h3 class="text-center" id="phone">{{ client.phone }}</h3>
+<div class="container-fluid pt-3">
+    <h3 class="text-center" id="name">{{ client.name }}</h3>
+    <h5 class="text-center" id="phone">{{ client.phone }}</h5>
     <p class="text-center" id="content">
         {% if client.business.name == "휴대폰" %}
             사업종류 - {{ client.business.name }}<br>
@@ -24,10 +24,10 @@
         {{ client.content }}
         {% endif %}
     </p>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-2"></div>
         <div class="col-8">
-            <div class="mt-5" style="border:1px solid black; border-radius:20px;">
+            <div style="border:1px solid black; border-radius:20px;">
                 <a class="text-center" href="{% url 'client:client_edit' client.phone %}"><h3 class="m-0">수정하기</h3></a>
             </div>
             <div class="mt-2" style="border:1px solid black; border-radius:20px;">

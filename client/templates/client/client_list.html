@@ -2,11 +2,7 @@
 {% block content %}
 
 <style>
-    body {
-        border:1px solid black;
-        margin:0;
-        padding:0
-    }
+
 </style>
 
 <div class="container">
@@ -23,13 +19,13 @@
     </a>
     {% endfor %}
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
+        <div class="col-1"></div>
+        <div class="col-10">
             <div class="mt-5" style="border:1px solid black; border-radius:20px;">
                 <a class="text-center" href="{% url 'client:client_new' %}"><h3 class="m-0">새로 추가하기</h3></a>
             </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
     </div>
 </div>
 
